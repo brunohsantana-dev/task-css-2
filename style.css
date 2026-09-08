@@ -1,72 +1,57 @@
-*{
+* {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; 
+    box-sizing: border-box;
     font-family: "Oswald", sans-serif;
-    
 }
 
 .wrapper {
-    height: 100vh;
-    width: 100vw;
-    
+    min-height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 60% 40%;
 }
 
 .container-left {
-    display: inline-block;
-    width: 60%;
-    padding-left: 130px;
-    margin-top: 20%;
+    min-width: 0;
+    padding: 80px clamp(32px, 7vw, 130px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
 }
-
-
-
-    
-
-.container-right {
-    display: inline-block;
-    background-color: rgba(93,93,125, 0.16);
-    height: 100vh;
-    width: 40%;
-    position: absolute;
-}
-
-img {
-    position: relative;
-    top: 25%;
-    right: 130px;
-    }
 
 h1 {
-        font-weight: 400;
-        font-size: 70px;
-        color: #5D5D7D;
-        line-height: 80px;
-        width: 368px;
-        
-    }
+    max-width: 368px;
+    font-weight: 400;
+    font-size: clamp(40px, 5vw, 70px);
+    line-height: 1.15;
+    color: #5d5d7d;
+}
 
 p {
-        font-weight: 400;
-        font-size: 28px;
-        color: #5D5D7D;
-        line-height: 48px;
-        opacity: 0.6;
-        margin: 15px 0;
-        width: 540px;
-    }
+    max-width: 540px;
+    margin: 24px 0 32px;
+    font-weight: 400;
+    font-size: clamp(20px, 2vw, 28px);
+    line-height: 1.7;
+    color: #5d5d7d;
+    opacity: 0.6;
+}
 
 button {
-        width: 269px;
-        height: 62px;
-        background: #9499ea;
-        box-shadow: 0px 10px 24px rgba(148, 153, 234, 0.0979959);
-        color: #FFFFFF;
-        border-radius: 30px;
-        border: none;
-        cursor: pointer;
-        font-size: 28px;
-        
+    width: 269px;
+    max-width: 100%;
+    min-height: 62px;
+    padding: 12px 24px;
+    background: #9499ea;
+    box-shadow: 0 10px 24px rgba(148, 153, 234, 0.1);
+    color: #ffffff;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 28px;
 }
 
 button:hover {
@@ -77,85 +62,106 @@ button:active {
     opacity: 0.5;
 }
 
-a {
-    font-size: 28px;
-    line-height: 41px;
-    color: #5D5D7D;
-    margin-right: 41px;
-    cursor: pointer;
-}
-    
-a:nth-child(2) {
-    opacity: 0.3;
-}
+.container-right {
+    min-width: 0;
+    padding: 24px 32px 48px;
+    background-color: rgba(93, 93, 125, 0.16);
 
-a:hover {
-    opacity: 0.4;
-}
-
-a:active {
-    opacity: 0.8;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
 }
 
 header {
-    margin: 24px 0 0 57px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px 24px;
 }
 
+.link-header {
+    font-size: 28px;
+    line-height: 1.5;
+    color: #5d5d7d;
+    cursor: pointer;
+}
 
-@media screen and (max-width: 1200px){
-    .container-left {
+.link-header:nth-child(2) {
+    opacity: 0.3;
+}
+
+.link-header:hover {
+    opacity: 0.4;
+}
+
+.link-header:active {
+    opacity: 0.8;
+}
+
+img {
+    display: block;
     width: 100%;
-    height: 50%;
-    padding: 0;
-    margin: 0;
+    max-width: 456px;
+    height: auto;
+    margin: auto;
+}
 
+/* Tablets and phones */
+@media screen and (max-width: 1000px) {
+    .wrapper {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .container-left {
+        padding: 64px 32px;
+        align-items: center;
+        text-align: center;
+    }
+
+    h1 {
+        max-width: 460px;
     }
 
     .container-right {
-        width: 100%;
-        height: auto;
-        display: block;
-        position: static;
-        padding: 40px;
-
+        padding: 32px;
+        gap: 32px;
     }
 
     img {
-        position: static;
-        max-width: 90%;
-        
-
-    
+        max-width: 400px;
     }
+}
 
-    header {
-        display: none;
+/* Phones */
+@media screen and (max-width: 480px) {
+    .container-left {
+        padding: 48px 20px;
     }
 
     h1 {
         font-size: 36px;
-        line-height: 53px;
-        width: auto;
-        margin: 58px 50px 0 50px;
-        text-align: center;
-
+        max-width: 300px;
     }
 
     p {
-        margin: 15px 40px;
-        width: auto;
-        text-align: center;
         font-size: 20px;
-        line-height: 24px;
+        line-height: 1.5;
+        margin: 20px 0 28px;
+    }
 
+    .container-right {
+        padding: 24px 20px 40px;
+    }
 
-}
+    header {
+        gap: 12px 20px;
+    }
 
-    button { 
-        margin: 0 auto;
-        display: block;
-        /*O elemento fica centralizado porque o display é block e a margem é auto*/
+    .link-header {
+        font-size: 20px;
+    }
 
-
-}
+    img {
+        max-width: 320px;
+    }
 }
